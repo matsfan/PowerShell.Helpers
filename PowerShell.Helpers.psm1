@@ -12,7 +12,10 @@
   A ScriptBlock with conditional logic, when true, will break out of the retry loop.
 
  .Example
-#>
+ $command = { Invoke-WebRequest https://www.foo.com }
+ $condition = { param($response) return $($response.StatusCode -eq 200) -eq $true }
+ (Get-CommandWithRetry $command $condition) 5
+ #>
 
 function Get-CommandWithRetry($command, $condition) {
   return { 
