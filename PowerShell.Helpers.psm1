@@ -14,7 +14,7 @@
  .Example
  $command = { Invoke-WebRequest https://www.foo.com }
  $condition = { param($response) return $($response.StatusCode -eq 200) -eq $true }
- (Get-CommandWithRetry $command $condition) 5
+ (Get-CommandWithRetry $command $condition) 5 10
  #>
 
 function Get-CommandWithRetry($command, $condition) {
